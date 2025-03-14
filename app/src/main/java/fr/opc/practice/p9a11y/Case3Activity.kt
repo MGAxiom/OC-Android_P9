@@ -24,7 +24,9 @@ class Case3Activity : AppCompatActivity() {
                     ColorStateList.valueOf(resources.getColor(R.color.red400, theme))
                 }
                 if (textLength < 2) {
-                    binding.pseudoEdit.error = "Not enough characters"
+                    binding.pseudoEdit.error = "Pas assez de caractères"
+                } else {
+                    binding.pseudoEdit.announceForAccessibility("Pseudo valide")
                 }
             }
         }

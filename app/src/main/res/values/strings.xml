@@ -14,5 +14,7 @@
     <string name="pseudo">Pseudonyme :</string>
     <string name="validate">Valider</string>
     <string name="demo_product_name">Nom du produit</string>
+    <string name="moins_bouton">Moins</string>
+    <string name="plus_bouton">Plus</string>
 
 </resources>

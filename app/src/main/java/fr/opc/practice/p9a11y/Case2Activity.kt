@@ -22,7 +22,7 @@ class Case2Activity : AppCompatActivity() {
         binding.addRecipeToBasket.contentDescription = "Ajouter au panier"
 
         val cardDescription = StringBuilder().apply {
-            append("Carte : ${binding.productTitle.text}. ")
+            append("${binding.productTitle.text}. ")
             append("${binding.favouriteButton.contentDescription}, ")
             append("et ${binding.addRecipeToBasket.contentDescription}.")
         }.toString()
@@ -47,10 +47,10 @@ class Case2Activity : AppCompatActivity() {
 
         ViewCompat.setAccessibilityDelegate(binding.recipeCard, object : AccessibilityDelegateCompat() {
             val favoriteAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                View.generateViewId(), "Activate Favorite Button"
+                View.generateViewId(), "Ajouter bouton favoris"
             )
             val actionButtonAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                View.generateViewId(), "Activate Action Button"
+                View.generateViewId(), "Ajouter au panier bouton"
             )
 
             override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
@@ -76,12 +76,7 @@ class Case2Activity : AppCompatActivity() {
     }
 
     private fun setFavouriteButtonIcon(isFavourite: Boolean) {
-        if (isFavourite) {
-            binding.favouriteButton.setImageResource(R.drawable.ic_favourite_on)
-            binding.favouriteButton.contentDescription = "Supprimer des favoris"
-        } else {
-            binding.favouriteButton.setImageResource(R.drawable.ic_favourite_off)
-            binding.favouriteButton.contentDescription = "Ajouter aux favoris"
-        }
+            binding.favouriteButton.setImageResource( if (isFavourite) R.drawable.ic_favourite_on else R.drawable.ic_favourite_off)
+            binding.favouriteButton.contentDescription = if (isFavourite) "Supprimer des favoris" else "Ajouter aux favoris"
     }
 }
