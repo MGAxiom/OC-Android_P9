@@ -30,7 +30,7 @@
                 android:id="@+id/productImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/cookie_amirali_mirhashemian_unsplash"
+                android:src="@drawable/recette_cookies_moelleux"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

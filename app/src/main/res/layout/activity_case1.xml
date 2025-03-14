@@ -32,9 +32,9 @@
 
         <ImageButton
             android:id="@+id/removeButton"
-            android:contentDescription="Remove button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:contentDescription="Moins"
+            android:layout_width="130px"
+            android:layout_height="130px"
             android:src="@drawable/ic_remove" />
 
         <TextView
@@ -47,9 +47,9 @@
 
         <ImageButton
             android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Add button"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:contentDescription="Plus"
             android:src="@drawable/ic_add" />
 
 

@@ -18,14 +18,13 @@ class Case2Activity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.favouriteButton.contentDescription = "Favourite button"
-        binding.addRecipeToBasket.contentDescription = "Add to basket"
+        binding.favouriteButton.contentDescription = "Bouton favoris"
+        binding.addRecipeToBasket.contentDescription = "Ajouter au panier"
 
         val cardDescription = StringBuilder().apply {
-            append("Card : ${binding.productTitle.text}. ")
-            append("Contains to buttons : ")
+            append("Carte : ${binding.productTitle.text}. ")
             append("${binding.favouriteButton.contentDescription}, ")
-            append("and ${binding.addRecipeToBasket.contentDescription}.")
+            append("et ${binding.addRecipeToBasket.contentDescription}.")
         }.toString()
 
         binding.recipeCard.contentDescription = cardDescription
@@ -79,10 +78,10 @@ class Case2Activity : AppCompatActivity() {
     private fun setFavouriteButtonIcon(isFavourite: Boolean) {
         if (isFavourite) {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_on)
-            binding.favouriteButton.contentDescription = "Remove from favourites"
+            binding.favouriteButton.contentDescription = "Supprimer des favoris"
         } else {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_off)
-            binding.favouriteButton.contentDescription = "Add to favourites"
+            binding.favouriteButton.contentDescription = "Ajouter aux favoris"
         }
     }
 }
