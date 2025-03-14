@@ -23,6 +23,9 @@ class Case3Activity : AppCompatActivity() {
                 } else {
                     ColorStateList.valueOf(resources.getColor(R.color.red400, theme))
                 }
+                if (textLength < 2) {
+                    binding.pseudoEdit.error = "Not enough characters"
+                }
             }
         }
         binding.validateButton.isEnabled = false

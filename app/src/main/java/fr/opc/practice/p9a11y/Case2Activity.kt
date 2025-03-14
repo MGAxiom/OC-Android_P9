@@ -1,8 +1,12 @@
 package fr.opc.practice.p9a11y
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import fr.opc.practice.p9a11y.databinding.ActivityCase2Binding
 
 class Case2Activity : AppCompatActivity() {
@@ -13,6 +17,18 @@ class Case2Activity : AppCompatActivity() {
         binding = ActivityCase2Binding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.favouriteButton.contentDescription = "Favourite button"
+        binding.addRecipeToBasket.contentDescription = "Add to basket"
+
+        val cardDescription = StringBuilder().apply {
+            append("Card : ${binding.productTitle.text}. ")
+            append("Contains to buttons : ")
+            append("${binding.favouriteButton.contentDescription}, ")
+            append("and ${binding.addRecipeToBasket.contentDescription}.")
+        }.toString()
+
+        binding.recipeCard.contentDescription = cardDescription
 
         var isFavourite = false
         setFavouriteButtonIcon(isFavourite)
@@ -29,13 +45,44 @@ class Case2Activity : AppCompatActivity() {
         binding.recipeCard.setOnClickListener {
             // TODO navigate to recipe screen
         }
+
+        ViewCompat.setAccessibilityDelegate(binding.recipeCard, object : AccessibilityDelegateCompat() {
+            val favoriteAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                View.generateViewId(), "Activate Favorite Button"
+            )
+            val actionButtonAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                View.generateViewId(), "Activate Action Button"
+            )
+
+            override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.addAction(favoriteAction)
+                info.addAction(actionButtonAction)
+            }
+
+            override fun performAccessibilityAction(host: View, action: Int, args: Bundle?): Boolean {
+                return when (action) {
+                    favoriteAction.id -> {
+                        binding.favouriteButton.performClick()
+                        true
+                    }
+                    actionButtonAction.id -> {
+                        binding.addRecipeToBasket.performClick()
+                        true
+                    }
+                    else -> super.performAccessibilityAction(host, action, args)
+                }
+            }
+        })
     }
 
     private fun setFavouriteButtonIcon(isFavourite: Boolean) {
         if (isFavourite) {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_on)
+            binding.favouriteButton.contentDescription = "Remove from favourites"
         } else {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_off)
+            binding.favouriteButton.contentDescription = "Add to favourites"
         }
     }
 }

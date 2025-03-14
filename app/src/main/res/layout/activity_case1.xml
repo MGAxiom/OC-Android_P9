@@ -3,55 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Case1Activity"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    tools:context=".Case1Activity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cas_1"
-        android:textSize="40sp"/>
+        android:textSize="40sp" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="@color/beige"
+        android:gravity="center_vertical"
         android:minHeight="90dp"
+        android:orientation="horizontal"
         android:padding="4dp">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/demo_product_name"
-            android:textSize="60px"
-            android:layout_weight="1"/>
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/removeButton"
+            android:contentDescription="Remove button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove"
-            />
+            android:src="@drawable/ic_remove" />
 
         <TextView
             android:id="@+id/quantityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="0"
-            android:textSize="60px"
             android:layout_margin="20dp"
-            android:textColor="@color/gray400"/>
+            android:textSize="25sp"
+            tools:text="0" />
 
         <ImageButton
             android:id="@+id/addButton"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
-            />
+            android:contentDescription="Add button"
+            android:src="@drawable/ic_add" />
 
 
     </LinearLayout>
